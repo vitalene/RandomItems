@@ -7,14 +7,17 @@ int main (int argc, const char * argv[])
         NSMutableArray *items = [[NSMutableArray alloc] init];
         
         
-        for (int i = 0; i < 10; i++) {
-            Item *item = [Item randomItem];
-            [items addObject:item];
-        }
+        Item *backpack = [[Item alloc] initWithName:@"Backpack"];
+        [items addObject:backpack];
+        Item *calculator = [[Item alloc] initWithName:@"Calculator"];
+        [items addObject:calculator];
+        backpack.containedItem = calculator;
+        backpack = nil;
+        calculator = nil;
+
         for (Item *item in items) {
             NSLog(@"%@", item);
         }
-        
         
         items = nil;
         

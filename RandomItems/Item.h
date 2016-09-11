@@ -5,7 +5,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Item : NSObject
+@interface Item : NSObject {
+    NSString *_name;
+    NSString *_serialNumber;
+    int _valueInDollars;
+    NSDate *_dateCreated;
+    Item *_containedItem;
+    Item *_container;
+}
 
 
 - (void)setName:(NSString *)str;
@@ -16,6 +23,12 @@
 - (int)valueInDollars;
 - (NSDate *)dateCreated;
 + (instancetype)randomItem;
+
+- (void)setContainedItem:(Item *)item;
+- (Item *)containedItem;
+- (void)setContainer:(Item *)item;
+- (Item *)container;
+
 
 - (instancetype)initWithName:(NSString *)name
               valueInDollars:(int)value

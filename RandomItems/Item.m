@@ -2,15 +2,7 @@
 //  RandomItems
 #import "Item.h"
 
-@implementation Item
-
-
-{
-    NSString *_name;
-    NSString *_serialNumber;
-    int _valueInDollars;
-    NSDate *_dateCreated;
-}
+@implementation Item 
 
 - (void)setName:(NSString *)str {
     _name = str;
@@ -34,8 +26,7 @@
     return _dateCreated;
 }
 
-- (NSString *)description
-{
+- (NSString *)description{
     NSString *descriptionString =
     [[NSString alloc] initWithFormat:@"%@ (%@): Worth $%d, recorded on %@",
      self.name,
@@ -48,8 +39,7 @@
 
 - (instancetype)initWithName:(NSString *)name
               valueInDollars:(int)value
-                serialNumber:(NSString *)sNumber
-{
+                serialNumber:(NSString *)sNumber {
     self = [super init];
     if (self) {
         _name = name;
@@ -92,5 +82,23 @@
     return newItem;
 }
 
+
+- (void)dealloc {
+    NSLog(@"Destroyed: %@", self);
+}
+
+- (void)setContainedItem:(Item *)item{
+    _containedItem = item;
+    item.container = self;
+}
+- (Item *)containedItem{
+    return _containedItem;
+}
+- (void)setContainer:(Item *)item{
+    _container = item;
+}
+- (Item *)container{
+    return _container;
+}
 
 @end
