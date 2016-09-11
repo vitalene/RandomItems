@@ -1,17 +1,22 @@
-//
-//  main.m
-//  RandomItems
-//
-//  Created by Neil Vitale on 9/11/16.
-//  Copyright © 2016 Neil Vitale. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
+#import "Item.h"
 
-int main(int argc, const char * argv[]) {
+int main (int argc, const char * argv[])
+{
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
+        NSMutableArray *items = [[NSMutableArray alloc] init];
+        
+        
+        for (int i = 0; i < 10; i++) {
+            Item *item = [Item randomItem];
+            [items addObject:item];
+        }
+        for (Item *item in items) {
+            NSLog(@"%@", item);
+        }
+        
+        
+        items = nil;
+        
     }
-    return 0;
-}
+    return 0; }
