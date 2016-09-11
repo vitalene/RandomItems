@@ -4,27 +4,6 @@
 
 @implementation Item 
 
-- (void)setName:(NSString *)str {
-    _name = str;
-}
-- (NSString *)name {
-    return _name;
-}
-- (void)setSerialNumber:(NSString *)str {
-    _serialNumber = str;
-}
-- (NSString *)serialNumber {
-    return _serialNumber;
-}
-- (void)setValueInDollars:(int)v {
-    _valueInDollars = v;
-}
-- (int)valueInDollars {
-    return _valueInDollars;
-}
-- (NSDate *)dateCreated {
-    return _dateCreated;
-}
 
 - (NSString *)description{
     NSString *descriptionString =
@@ -87,18 +66,10 @@
     NSLog(@"Destroyed: %@", self);
 }
 
-- (void)setContainedItem:(Item *)item{
-    _containedItem = item;
-    item.container = self;
+- (void)setContainedItem:(Item *)containedItem{
+    _containedItem = containedItem;
+    self.containedItem.container = self;
 }
-- (Item *)containedItem{
-    return _containedItem;
-}
-- (void)setContainer:(Item *)item{
-    _container = item;
-}
-- (Item *)container{
-    return _container;
-}
+
 
 @end
